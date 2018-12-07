@@ -33,11 +33,10 @@ class Create_Account(CreateView):
 
 create_account = Create_Account.as_view()
 
-#アカウントログイン
+#ログイン
 class Account_login(View):
-    form_class = LoginForm
     def post(self, request, *arg, **kwargs):
-        form = self.form_class(data=request.POST)
+        form = LoginForm(data=request.POST)
         if form.is_valid():
             username = form.cleaned_data.get('username')
             user = User.objects.get(username=username)
