@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <body>
+    {% if form.errors  %}
+    <p>ユーザーID, パスワードが一致しません．</p>
+    {% endif %}
+    <form method="POST" action="{% url 'login' %}">
+      {% csrf_token %}
+      <label>ユーザーID</label>
+      {{ form.username }}
+      {{ form.username.errors }}
+      <label>パスワード</label>
+      {{ form.password }}
+      {{ form.password.errors }}
+      <button type = "submit">ログイン</button>
+    </form>
+  </body>
+</html>
